@@ -41,7 +41,6 @@ public class TestNGBasic {
         // Check the page title (try changing to make the assertion fail!)
         System.out.println("Checking title");
         
-        
         Assert.assertEquals(driver.getTitle(), "Selenium Test Example Page");
         System.out.println("TestFinished");
 	}
