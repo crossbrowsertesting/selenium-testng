@@ -1,4 +1,4 @@
-package CBTTestNG2.TestNG;
+package CBTTestNG.TestNG;
 
 import java.net.MalformedURLException;
 import java.net.URL;
