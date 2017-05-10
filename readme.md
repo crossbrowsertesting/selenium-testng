@@ -1,33 +1,33 @@
-**CBT and TestNG**
+#CBT and TestNG#
 
-***Creating Capabilities for your TestNG Tests***
+##Creating Capabilities for your TestNG Tests##
 
 Capabilities should be given before your TestSuite has begin. Note that your username will have to contain %40 rather than the '@' character to avoid the MalformedURLException. The browser_api_name and os_api_name can be pulled from an [API call](https://crossbrowsertesting.com/apidocs/v3/selenium.html#!/default/get_selenium_browsers) to get possible combinations. 
 
 ```
 
-	@BeforeSuite
-	public void setup() throws MalformedURLException {
-		String username = "you%40yourdomain.com";
-		String authkey = "yourauthkey";
-		DesiredCapabilities caps = new DesiredCapabilities();
-		caps.setCapability("browser_api_name", "Chrome56x64");
-		caps.setCapability("os_api_name", "Win10-E14");
-		
-		driver = new RemoteWebDriver(new URL("http://" + username + ":" + authkey +"@hub.crossbrowsertesting.com:80/wd/hub"), caps);
-	}
+    @BeforeSuite
+    public void setup() throws MalformedURLException {
+        String username = "you%40yourdomain.com";
+        String authkey = "yourauthkey";
+        DesiredCapabilities caps = new DesiredCapabilities();
+        caps.setCapability("browser_api_name", "Chrome56x64");
+        caps.setCapability("os_api_name", "Win10-E14");
+        
+        driver = new RemoteWebDriver(new URL("http://" + username + ":" + authkey +"@hub.crossbrowsertesting.com:80/wd/hub"), caps);
+    }
 
 ```
 
-***Creating Test Cases***
+##Creating Test Cases##
 
 Actual test cases are prefixed by an @Test annotation as shown below. At this point, you can add any tests you'd like, and they will be run against the driver instantiated in the setup method. Note that we can use TestNG's static Assert methods to assert attributes of our webpage. 
 
 ```
 
 @Test
-	public void todoTest() {
-		System.out.println("Loading Url");
+    public void todoTest() {
+        System.out.println("Loading Url");
                 driver.get("http://crossbrowsertesting.github.io/todo-app.html");
 
                 // maximize the window - DESKTOPS ONLY
@@ -62,23 +62,23 @@ Actual test cases are prefixed by an @Test annotation as shown below. At this po
                 Assert.assertEquals(4, elems.size());
                 
                 System.out.println("TestFinished");
-	}
+    }
 ```
 
-***TearDowns***
+##TearDowns##
 
 Tear downs can be annotated with @AfterSuite. While it goes without saying, you should always call driver.quit() in the teardown methods of your suite. Additionally, you can use [our API](https://crossbrowsertesting.com/apidocs/v3/selenium.html#!/default/put_selenium_selenium_test_id) to generate a test score in our App based on whether or not your test ran successfully. 
 
 ```
-	@AfterSuite
-	public void tearDown() {
-		driver.quit();
-	}
+    @AfterSuite
+    public void tearDown() {
+        driver.quit();
+    }
 
 
 ```
 
-***Parallel Testing***
+##Parallel Testing##
 
 Parallel testing is fast and simple with TestNG. I do so by making modifications to my testng.xml configuration file. This can be done two ways, by suite:
 
@@ -144,54 +144,54 @@ import org.testng.TestListenerAdapter;
 import com.beust.testng.TestNG;
 
 public class EntryPoint {
-	@SuppressWarnings("deprecation")
-	public static void main(String[] args) {
-		TestListenerAdapter tla = new TestListenerAdapter();
-		TestNG testng = new TestNG();
-		testng.setTestClasses(new Class[] { TestNGBasic.class, TestNGLogin.class, TestNGTodo.class , TestNGDD.class});
-		
-		testng.addListener(tla);
-		testng.run();
-	}
+    @SuppressWarnings("deprecation")
+    public static void main(String[] args) {
+        TestListenerAdapter tla = new TestListenerAdapter();
+        TestNG testng = new TestNG();
+        testng.setTestClasses(new Class[] { TestNGBasic.class, TestNGLogin.class, TestNGTodo.class , TestNGDD.class});
+        
+        testng.addListener(tla);
+        testng.run();
+    }
 }
 
 ```
 
-***Data Driven Development with TestNG***
+##Data Driven Development with TestNG##
 
 Data driven development is becoming more and more popular and necessary, especially . TestNG and Java together give us an easy to work-with platform for importing data from Excel spreadsheets or a database. The example shown below does just that, and the same data can be used in CrossBrowserTesting to perform data-driven development quickly and efficiently:
 
 ```
-	public Sheet getSpreadSheet() {
-		File file = new File("//Path//To//Test.xlsx");
-		
-		FileInputStream inputStream = null;
-		Workbook wb = null;
-		try {
-			inputStream = new FileInputStream(file);
-			wb = WorkbookFactory.create(inputStream);
-			System.out.println(wb.toString());
-		} catch (IOException ex) {
-			System.out.println("Error Message " + ex.getMessage());
-		} catch (InvalidFormatException e) {
-			System.out.println("Invalid File format!");
-		}
-	
-		Sheet mySheet = wb.getSheet("MySheet");
-		
-		return mySheet;
-	}
-	@Test
-	public void loginPage() {
-		driver.get("http://crossbrowsertesting.github.io/login-form.html");
-		
-		Sheet mySheet = getSpreadSheet();
-		
-		String user = mySheet.getRow(0).getCell(0).toString();
-		String pass = mySheet.getRow(0).getCell(1).toString();
-		
-		// the first time around, it should not work!
-		driver.findElementByName("username").sendKeys(user);
+    public Sheet getSpreadSheet() {
+        File file = new File("//Path//To//Test.xlsx");
+        
+        FileInputStream inputStream = null;
+        Workbook wb = null;
+        try {
+            inputStream = new FileInputStream(file);
+            wb = WorkbookFactory.create(inputStream);
+            System.out.println(wb.toString());
+        } catch (IOException ex) {
+            System.out.println("Error Message " + ex.getMessage());
+        } catch (InvalidFormatException e) {
+            System.out.println("Invalid File format!");
+        }
+    
+        Sheet mySheet = wb.getSheet("MySheet");
+        
+        return mySheet;
+    }
+    @Test
+    public void loginPage() {
+        driver.get("http://crossbrowsertesting.github.io/login-form.html");
+        
+        Sheet mySheet = getSpreadSheet();
+        
+        String user = mySheet.getRow(0).getCell(0).toString();
+        String pass = mySheet.getRow(0).getCell(1).toString();
+        
+        // the first time around, it should not work!
+        driver.findElementByName("username").sendKeys(user);
         
         // then by entering the password
         System.out.println("Entering password");
@@ -203,14 +203,14 @@ Data driven development is becoming more and more popular and necessary, especia
         
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.textToBePresentInElement(By.xpath("/html/body/div/div/div/div[1]"), "Username or password is incorrect"));
-		
+        
         // however, with the correct credentials, it should!
         driver.get("http://crossbrowsertesting.github.io/login-form.html");
-		
-		user = mySheet.getRow(1).getCell(0).toString();
-		pass = mySheet.getRow(1).getCell(1).toString();
-		
-		driver.findElementByName("username").sendKeys(user);
+        
+        user = mySheet.getRow(1).getCell(0).toString();
+        pass = mySheet.getRow(1).getCell(1).toString();
+        
+        driver.findElementByName("username").sendKeys(user);
         
         // then by entering the password
         System.out.println("Entering password");
@@ -219,7 +219,7 @@ Data driven development is becoming more and more popular and necessary, especia
         // then by clicking the login button
         System.out.println("Logging in");
         driver.findElementByCssSelector("div.form-actions > button").click();
-		
+        
         // let's wait here to ensure the page has loaded completely
         wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"logged-in-message\"]/h2")));
@@ -228,7 +228,7 @@ Data driven development is becoming more and more popular and necessary, especia
         Assert.assertEquals("Welcome tester@crossbrowsertesting.com", welcomeMessage);
         
         System.out.println("TestFinished");
-	}
+    }
 ```
 
 We hit some major points here, but there's a ton of documentation out there. I'd definitely recommend checking out [TestNG's documentation](http://testng.org/doc/documentation-main.html) as well as [CBT's own documentation](https://crossbrowsertesting.com/apidocs/v3/selenium.html#!/default/get_selenium_browsers) for working with our API. If you ever have any questions or concerns, don't hesitate to [reach out to us!](mailto:support@crossbrowsertesting.com) 
