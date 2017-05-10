@@ -1,6 +1,6 @@
-**CBT and TestNG**
+#CBT and TestNG#
 
-***Creating Capabilities for your TestNG Tests***
+##Creating Capabilities for your TestNG Tests##
 
 Capabilities can be performed before your TestSuite has begin. Note that your username will have to contain %40 rather than the '@' character to avoid the MalformedURLException. The browser_api_name and os_api_name can be pulled from an [API call](https://crossbrowsertesting.com/apidocs/v3/selenium.html#!/default/get_selenium_browsers) to get possible combinations. 
 
@@ -19,7 +19,7 @@ Capabilities can be performed before your TestSuite has begin. Note that your us
 
 ```
 
-**Creating Test Cases**
+##Creating Test Cases##
 
 Actual test cases are prefixed by an @Test annotation as shown below. At this point, you can add any tests you'd like to you'd like which will be run against the driver instantiated in the setup method. Note that we can use TestNG's static Assert methods to assert attributes of our webpage. 
 
@@ -65,7 +65,7 @@ Actual test cases are prefixed by an @Test annotation as shown below. At this po
 	}
 ```
 
-***TearDowns***
+##TearDowns##
 
 Tear downs can be annotated with @AfterSuite. While it goes without saying, you should always call driver.quit() in the teardown methods of your suite. Additionally, you can use our API to generate a test score in our App based on whether or not your test ran successfully. 
 
@@ -78,20 +78,20 @@ Tear downs can be annotated with @AfterSuite. While it goes without saying, you 
 
 ```
 
-***Parallel Testing***
+##Parallel Testing##
 
 Parallel testing is fast and simple with TestNG. I do so by making modifications to my testng.xml configuration file. This can be done two ways, by suite:
 
 ```
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="CBT - Suite">
-        <test name="Login">
-                <classes>
-                        <class name="CBTTestNG.TestNG.TestNGBasic" />
-                        <class name="CBTTestNG.TestNG.TestNGLogin" />
-                        <class name="CBTTestNG.TestNG.TestNGTodo" />
-                </classes>
-        </test>
+    <test name="Login">
+        <classes>
+            <class name="CBTTestNG.TestNG.TestNGBasic" />
+            <class name="CBTTestNG.TestNG.TestNGLogin" />
+            <class name="CBTTestNG.TestNG.TestNGTodo" />
+        </classes>
+    </test>
 </suite>
 
 ```
@@ -157,7 +157,7 @@ public class EntryPoint {
 
 ```
 
-***Data Driven Development with TestNG***
+##Data Driven Development with TestNG##
 
 Data driven development is becoming more and more popular and necessary, especially . TestNG and Java together give us an easy to work-with platform for importing data from Excel spreadsheets or a database. The example shown below does just that, and the same data can be used in CrossBrowserTesting to perform data-driven development quickly and efficiently:
 
