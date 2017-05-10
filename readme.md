@@ -2,13 +2,13 @@
 
 ##Creating Capabilities for your TestNG Tests##
 
-Capabilities can be performed before your TestSuite has begin. Note that your username will have to contain %40 rather than the '@' character to avoid the MalformedURLException. The browser_api_name and os_api_name can be pulled from an [API call](https://crossbrowsertesting.com/apidocs/v3/selenium.html#!/default/get_selenium_browsers) to get possible combinations. 
+Capabilities should be given before your TestSuite has begin. Note that your username will have to contain %40 rather than the '@' character to avoid the MalformedURLException. The browser_api_name and os_api_name can be pulled from an [API call](https://crossbrowsertesting.com/apidocs/v3/selenium.html#!/default/get_selenium_browsers) to get possible combinations. 
 
 ```
 
 	@BeforeSuite
 	public void setup() throws MalformedURLException {
-		String username = "you%40@yourdomain.com";
+		String username = "you%40yourdomain.com";
 		String authkey = "yourauthkey";
 		DesiredCapabilities caps = new DesiredCapabilities();
 		caps.setCapability("browser_api_name", "Chrome56x64");
@@ -21,7 +21,7 @@ Capabilities can be performed before your TestSuite has begin. Note that your us
 
 ##Creating Test Cases##
 
-Actual test cases are prefixed by an @Test annotation as shown below. At this point, you can add any tests you'd like to you'd like which will be run against the driver instantiated in the setup method. Note that we can use TestNG's static Assert methods to assert attributes of our webpage. 
+Actual test cases are prefixed by an @Test annotation as shown below. At this point, you can add any tests you'd like, and they will be run against the driver instantiated in the setup method. Note that we can use TestNG's static Assert methods to assert attributes of our webpage. 
 
 ```
 
@@ -67,7 +67,7 @@ Actual test cases are prefixed by an @Test annotation as shown below. At this po
 
 ##TearDowns##
 
-Tear downs can be annotated with @AfterSuite. While it goes without saying, you should always call driver.quit() in the teardown methods of your suite. Additionally, you can use our API to generate a test score in our App based on whether or not your test ran successfully. 
+Tear downs can be annotated with @AfterSuite. While it goes without saying, you should always call driver.quit() in the teardown methods of your suite. Additionally, you can use [our API](https://crossbrowsertesting.com/apidocs/v3/selenium.html#!/default/put_selenium_selenium_test_id) to generate a test score in our App based on whether or not your test ran successfully. 
 
 ```
 	@AfterSuite
