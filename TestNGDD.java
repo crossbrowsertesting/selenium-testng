@@ -30,8 +30,8 @@ public class TestNGDD {
 		String username = "you%40yourdomain.com";
 		String authkey = "yourauthkey";
 		DesiredCapabilities caps = new DesiredCapabilities();
-		caps.setCapability("browser_api_name", "Chrome56x64");
-		caps.setCapability("os_api_name", "Win10-E14");
+		caps.setCapability("browserName", "Chrome");	// Automatically pulls the latest version of Chrome
+		caps.setCapability("platform", "Windows 10");	// To specify a version, add setCapability("version", "desired version")
 		
 		driver = new RemoteWebDriver(new URL("http://" + username + ":" + authkey +"@hub.crossbrowsertesting.com:80/wd/hub"), caps);
 	}
