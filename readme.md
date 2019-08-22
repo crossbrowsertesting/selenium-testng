@@ -1,5 +1,5 @@
 <h1><strong>Getting Started with TestNG and CrossBrowserTesting</strong></h1>
-<p><em>For this document, we provide an example test located in our <a href="https://github.com/crossbrowsertesting/selenium-testng">TestNG Github Repository</a>.</em></p>
+<p><em>For this document, we provide an example tests located in our <a href="https://github.com/crossbrowsertesting/selenium-testng">TestNG Github Repository</a>.</em></p>
 
 <p><a href="https://testng.org/doc/">TestNG</a> is a Java testing framework inspired by JUnit. TestNG introduces new functionalities that make it more powerful and easier to cover all categories of testing, including unit, functional, and end-to-end.</p>
 <p>In this guide we will use TestNG for testing using the <a href="https://www.seleniumhq.org/">Selenium Webdriver</a> and <a href="https://www.java.com/en/">Java</a> programming language.</p>
