@@ -108,17 +108,17 @@ As well as by capabilties. Note that the @parameter prefix will have to be added
   <parameter name="os" value="Win10"/>
   <parameter name="browser" value="Chrome76"/>
     <classes>
-      <class name="CBTTestNG.TestNG.TestNGBasic"/>
+      <class name="CBTTestNG.TestNG.TestNGTodo"/>
     </classes>
-  </test> <!-- Test -->
+  </test>
   <test name="SecondTest">
   <parameter name="os" value="Mac10.14"/>
   <parameter name="browser" value="Chrome76"/>
     <classes>
-      <class name="CBTTestNG.TestNG.TestNGBasic"/>
+      <class name="CBTTestNG.TestNG.TestNGTodo"/>
     </classes>
-  </test> <!-- Test -->
-</suite> <!-- Suite -->
+  </test>
+</suite>
 ```
 
 Parameters reflected in test cases:
