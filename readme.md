@@ -1,6 +1,8 @@
-**CBT and TestNG**
+<h1><strong>Getting Started with TestNG and CrossBrowserTesting</strong></h1>
+<p><em>For this document, we provide an example test located in our <a href="https://github.com/crossbrowsertesting/selenium-testng">TestNG Github Repository</a>.</em></p>
 
-***Creating Capabilities for your TestNG Tests***
+<p><a href="https://testng.org/doc/">TestNG</a> is a Java testing framework inspired by JUnit. TestNG introduces new functionalities that make it more powerful and easier to cover all categories of testing, including unit, functional, and end-to-end.</p>
+<p>In this guide we will use TestNG for testing using the <a href="https://www.seleniumhq.org/">Selenium Webdriver</a> and <a href="https://www.java.com/en/">Java</a> programming language.</p>
 
 Capabilities should be given before your TestSuite has begin. Note that your username will have to contain %40 rather than the '@' character to avoid the MalformedURLException. The browser_api_name and os_api_name can be pulled from an [API call](https://crossbrowsertesting.com/apidocs/v3/selenium.html#!/default/get_selenium_browsers) to get possible combinations. 
 
@@ -131,7 +133,7 @@ Parameters reflected in test cases:
     capability.setCapability("browser_api_name", browser);
     capability.setCapability("name", "TestNG-Parallel");
     driver = new RemoteWebDriver(
-      new URL("http://" + username + ":" + api_key + "@hub.crossbrowsertesting.com:80/wd/hub"),
+      new URL("http://" + username + ":" + authkey + "@hub.crossbrowsertesting.com:80/wd/hub"),
       capability);
   }  
 
