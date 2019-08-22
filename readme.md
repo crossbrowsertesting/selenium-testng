@@ -105,15 +105,15 @@ As well as by capabilties. Note that the @parameter prefix will have to be added
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite thread-count="2" name="Suite" parallel="tests">
   <test name="FirstTest">
-  <parameter name="os" value="Win7x64-C2"/>
-  <parameter name="browser" value="IE10"/>
+  <parameter name="os" value="Win10"/>
+  <parameter name="browser" value="Chrome76"/>
     <classes>
       <class name="CBTTestNG.TestNG.TestNGBasic"/>
     </classes>
   </test> <!-- Test -->
   <test name="SecondTest">
-  <parameter name="os" value="Win8.1"/>
-  <parameter name="browser" value="Chrome43x64"/>
+  <parameter name="os" value="Mac10.14"/>
+  <parameter name="browser" value="Chrome76"/>
     <classes>
       <class name="CBTTestNG.TestNG.TestNGBasic"/>
     </classes>
