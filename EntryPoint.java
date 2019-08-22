@@ -1,8 +1,7 @@
 package CBTTestNG.TestNG;
 
 import org.testng.TestListenerAdapter;
-
-import com.beust.testng.TestNG;
+import org.testng.TestNG;
 
 public class EntryPoint {
 	@SuppressWarnings("deprecation")
