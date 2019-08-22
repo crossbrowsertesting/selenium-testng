@@ -141,7 +141,7 @@ Additionally, test classes can be added and executed in parallel using an EntryP
 
 ```
 import org.testng.TestListenerAdapter;
-import com.beust.testng.TestNG;
+import org.testng.TestNG;
 
 public class EntryPoint {
     @SuppressWarnings("deprecation")
