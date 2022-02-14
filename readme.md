@@ -89,7 +89,7 @@ Parallel testing is fast and simple with TestNG. I do so by making modifications
 <suite name="CBT - Suite">
     <test name="Login">
         <classes>
-            <class name="CBTTestNG.TestNG.TestNGBasic" />
+            <class name="CBTTestNG.TestNG.TestNGTitleCheck" />
             <class name="CBTTestNG.TestNG.TestNGLogin" />
             <class name="CBTTestNG.TestNG.TestNGTodo" />
         </classes>
@@ -150,7 +150,7 @@ public class EntryPoint {
     public static void main(String[] args) {
         TestListenerAdapter tla = new TestListenerAdapter();
         TestNG testng = new TestNG();
-        testng.setTestClasses(new Class[] { TestNGBasic.class, TestNGLogin.class, TestNGTodo.class , TestNGDD.class});
+        testng.setTestClasses(new Class[] { TestNGTitleCheck.class, TestNGLogin.class, TestNGTodo.class , TestNGDD.class});
         
         testng.addListener(tla);
         testng.run();

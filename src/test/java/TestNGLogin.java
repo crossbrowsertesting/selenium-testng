@@ -1,5 +1,3 @@
-package CBTTestNG.TestNG;
-
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -19,14 +17,17 @@ public class TestNGLogin {
 
 	@BeforeSuite
 	public void setup() throws MalformedURLException {
-		String username = "you%40@yourdomain.com";
-		String authkey = "yourauthkey";
+		String username = "name%40domain.com"; // Your username
+		String authkey = "xxxxxxxxxxxxxxxx";  // Your authkey
 		DesiredCapabilities caps = new DesiredCapabilities();
 		caps.setCapability("browserName", "Chrome");	// Automatically pulls the latest version of Chrome
 		caps.setCapability("platform", "Windows 10");	// To specify a version, add setCapability("version", "desired version")
 		caps.setCapability("record_video", "true");
-		caps.setCapability("record_network", "false");
-		
+		caps.setCapability("record_network", "true");
+		caps.setCapability("build", "TestNG");
+		caps.setCapability("name", "TestNG - Login Example");
+
+
 		driver = new RemoteWebDriver(new URL("http://" + username + ":" + authkey +"@hub.crossbrowsertesting.com:80/wd/hub"), caps);
 	}
 
