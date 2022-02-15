@@ -1,7 +1,43 @@
 <h1><strong>Getting Started with TestNG and CrossBrowserTesting</strong></h1>
-<p><em>For this document, we provide an example tests located in our <a href="https://github.com/crossbrowsertesting/selenium-testng">TestNG Github Repository</a>.</em></p>
-
 <p><a href="https://testng.org/doc/">TestNG</a> is a Java testing framework inspired by JUnit. TestNG introduces new functionalities that make it more powerful and easier to cover all categories of testing, including unit, functional, and end-to-end.</p>
+
+***Setting Up Using Maven***
+
+<p><em>The easisest way to setup a TestNG example test is to clone our <a href="https://github.com/crossbrowsertesting/selenium-testng">TestNG Github Repository</a></a>.</em></p>
+
+`git clone https://github.com/crossbrowsertesting/selenium-testng.git`
+
+<p><em>Then cd into the new folder.</em></p>
+
+`cd selenium-testng`
+
+<p><em>Now open that folder with your choice of IDE, using Maven</em></p>
+
+<p><em>Go into [selenium-testng/src/java], there will be 3 files. Each one is a different test with the capabilties listed there. You will want to input your email and authkey from your <a href="https://app.crossbrowsertesting.com/account">CBT account</a> into the file before you run it.</em></p>
+
+<p><em>Remember to use "%40" instead of "@" to avoid the MalformedURLException when entering your email.</em></p>
+
+<p><em>Now you are ready to run your first TestNG test. You can right click any of the three files to run them indavidually, or you can use Maven to run them using 'profiles'.</em></p>
+
+<p><em>To run all three tests at the same time, run the below command.</em></p>
+
+`mvn test -P parallel`
+
+<p><em>To run a single test using Maven, run the below command. The ending of this command is dependant on which test you prefer to run.</em></p>
+
+`mvn test -P login / title / todo`
+
+
+
+
+
+
+
+
+
+
+***Setting Up Without Maven***
+
 <p>In this guide we will use TestNG for testing using the <a href="https://www.seleniumhq.org/">Selenium Webdriver</a> and <a href="https://www.java.com/en/">Java</a> programming language.</p>
 
 Capabilities should be given before your TestSuite has begin. Note that your username will have to contain %40 rather than the '@' character to avoid the MalformedURLException. The browser_api_name and os_api_name can be pulled from an [API call](https://crossbrowsertesting.com/apidocs/v3/selenium.html#!/default/get_selenium_browsers) to get possible combinations. 
