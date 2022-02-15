@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="CBT - Suite">
+    <test name="Login">
+        <classes>
+            <class name="TestNGTitleCheck" />
+            <class name="TestNGLogin" />
+            <class name="TestNGTodo" />
+        </classes>
+    </test>
+</suite>
